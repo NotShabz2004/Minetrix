@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Encryption Demo</title>
+  <link rel="stylesheet" href="minimalisticdesign.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Blockchain Encryption Demo</h1>
+    
+    <div class="split-view">
+      <div class="view-panel">
+        <h3 class="view-title">User View (Decrypted)</h3>
+        <button class="btn" id="uploadBtn">Upload File</button>
+        <input type="file" id="fileInput">
+        
+        <div id="fileDetails" class="file-info">
+          <p><span class="status"></span> <span id="fileName">No file selected</span></p>
+          <p>Size: <span id="fileSize">0 KB</span></p>
+        </div>
+        
+        <button class="btn" id="encryptBtn" disabled>Encrypt & Store</button>
+        <button class="btn" id="downloadBtn" disabled>Download Decrypted</button>
+      </div>
+      
+      <div class="view-panel">
+        <h3 class="view-title">Trespasser View (Encrypted)</h3>
+        <div id="trespasserInfo" class="file-info">
+          <p><span class="status"></span> No encrypted data available</p>
+        </div>
+        <button class="btn" id="decryptBtn" disabled>Attempt Decryption</button>
+        <div id="encryptedData" class="encrypted-data">
+          [Encrypted data will appear here]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="backendpart.js"></script>
+</body>
+</html>
