@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Encrypting...</title>
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #0ef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: monospace;
+        font-size: 20px;
+        flex-direction: column;
+      }
+
+      #log {
+        white-space: pre-line;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="log">Initializing...</div>
+
+    <script>
+      const steps = [
+        "Compressing...",
+        "Encrypting...",
+        "Saved to Encrypted.qvault...",
+        "Moving Encrypted File to NAS...",
+      ];
+
+      let current = 0;
+      const logEl = document.getElementById("log");
+
+      function nextStep() {
+        if (current < steps.length) {
+          logEl.textContent += "\n" + steps[current];
+          current++;
+          setTimeout(nextStep, 1000); // 1 second delay between steps
+        } else {
+          // After all steps, redirect
+          window.location.href = "/encryption-complete";
+        }
+      }
+
+      setTimeout(nextStep, 1000);
+    </script>
+  </body>
+</html>

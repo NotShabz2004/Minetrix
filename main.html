@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Encryption Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+
+      .split-view {
+        display: flex;
+        gap: 20px;
+      }
+
+      .view-panel {
+        flex: 1;
+        background: #111;
+        padding: 20px;
+        border-radius: 5px;
+        min-height: 400px;
+      }
+
+      .view-title {
+        margin-top: 0;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+        font-weight: 300;
+      }
+
+      .btn {
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 10px 0;
+        display: block;
+        width: 100%;
+        transition: background 0.2s;
+      }
+
+      .btn:hover {
+        background: #ddd;
+      }
+
+      .file-info,
+      .encrypted-data {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Blockchain Encryption Demo</h1>
+
+      <div class="split-view">
+        <div class="view-panel">
+          <h3 class="view-title">User View (Decrypted)</h3>
+          <button class="btn" id="uploadRedirect">Upload File</button>
+        </div>
+
+        <div class="view-panel">
+          <h3 class="view-title">Trespasser View (Encrypted)</h3>
+          <p><span class="status"></span> No encrypted data available</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("uploadRedirect")
+        .addEventListener("click", () => {
+          window.location.href = "/index"; // Flask will handle this and render 'index.html'
+        });
+    </script>
+  </body>
+</html>

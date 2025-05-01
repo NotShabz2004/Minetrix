@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Encryptor</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0f172a;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      .screen {
+        background: #e2e8f0;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        color: #1e293b;
+        width: 300px;
+      }
+
+      .upload-area {
+        border: 2px dashed #64748b;
+        padding: 30px;
+        border-radius: 10px;
+        background: #f8fafc;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+
+      .button {
+        background: #4f46e5;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Secure File Encryptor</h1>
+
+    <div class="screen" id="uploadScreen">
+      <div class="upload-area" id="dropArea">
+        <p>Drag & Drop your file here<br />or click to browse</p>
+      </div>
+      <form
+        id="uploadForm"
+        action="/encryption"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="file" id="fileInput" name="file" />
+        <button class="button" type="submit">Encrypt</button>
+      </form>
+    </div>
+
+    <script>
+      const dropArea = document.getElementById("dropArea");
+      const fileInput = document.getElementById("fileInput");
+
+      dropArea.addEventListener("click", () => fileInput.click());
+
+      fileInput.addEventListener("change", () => {
+        dropArea.innerHTML = `<p>${fileInput.files[0].name}</p>`;
+      });
+
+      dropArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropArea.style.borderColor = "#4f46e5";
+      });
+
+      dropArea.addEventListener("dragleave", () => {
+        dropArea.style.borderColor = "#64748b";
+      });
+
+      dropArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        const selectedFile = e.dataTransfer.files[0];
+        fileInput.files = e.dataTransfer.files;
+        dropArea.innerHTML = `<p>${selectedFile.name}</p>`;
+        dropArea.style.borderColor = "#64748b";
+      });
+    </script>
+  </body>
+</html>
