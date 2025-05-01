@@ -66,29 +66,27 @@ def decrypt_directory(input_dir, output_dir, KEY_PATH):
 
                 print(f"Decrypted: {name}")
 
-
+# === Menu ===
 while True:
     print("============= AES Encrypter =============")
     print("1. Encrypt Directory")
     print("2. Decrypt Directory")
     print("3. Exit")
-    option = input("Enter Option: ")
+    option = input("Enter Option: ").strip()
 
     print("=========================================")
 
     if option == "1":
-        rawPath = input("Enter Source Folder: ")
-        encPath = input("Enter Encrypted Folder Path: ")
-        key = input("Enter Key filename (Ends with.key): ")
+        rawPath = input("Enter Folder to Encrypt: ").strip()
+        encPath = input("Enter Destination Folder for Encrypted Files: ").strip()
+        key = input("Enter Key filename (e.g., aes.key): ").strip()
 
         encrypt_directory(rawPath, encPath, key)
 
-
-
     elif option == "2":
-        encPath = input("Enter Encrypted Folder Path (Ends with .enc): ")
-        decPath = input("Enter Destination Folder: ")
-        key = input("Enter Key Path (Ends with .key): ")
+        encPath = input("Enter Folder with Encrypted Files: ").strip()
+        decPath = input("Enter Destination Folder to Decrypt: ").strip()
+        key = input("Enter Key filename (e.g., aes.key): ").strip()
 
         decrypt_directory(encPath, decPath, key)
 
@@ -98,4 +96,3 @@ while True:
 
     else:
         print("Invalid Input. Try again.")
-        break

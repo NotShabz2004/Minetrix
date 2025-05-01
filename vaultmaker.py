@@ -5,11 +5,6 @@ import uuid
 import hashlib
 import json
 
-# Paths (customized for your setup)
-BASE_DIR = r"C:\Users\acer\Desktop\VaultFile"
-FOLDER_TO_ZIP = os.path.join(BASE_DIR, "my_data")
-TEMP_ZIP = os.path.join(BASE_DIR, "data.zip")
-OUTPUT_FILE = os.path.join(BASE_DIR, "vault.qvault")
 
 def zip_folder(folder_path, zip_path):
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
@@ -45,13 +40,3 @@ def create_qvault(header, data_file, output_file):
             out.write(f.read())
     
     print(f"[+] .qvault file created: {output_file}")
-
-# -------- MAIN --------
-if __name__ == "__main__":
-    zip_folder(FOLDER_TO_ZIP, TEMP_ZIP)
-    header = make_header(TEMP_ZIP)
-    create_qvault(header, TEMP_ZIP, OUTPUT_FILE)
-
-    # Cleanup
-    os.remove(TEMP_ZIP)
-    print("[*] Temp zip deleted. Vault ready.")
